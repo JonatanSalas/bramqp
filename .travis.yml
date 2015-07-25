@@ -11,3 +11,12 @@ node_js:
 services: rabbitmq
 before_script:
   - sudo pip install pre-commit
+  - sudo cp -r ./test/config/rabbitmq/ /etc/
+  - sudo service rabbitmq-server restart
+after_script:
+  - cat /var/log/rabbitmq/rabbit@localhost.log
+  - cat /var/log/rabbitmq/rabbit@localhost-sasl.log
+  - cat /var/log/rabbitmq/startup_log
+  - cat /var/log/rabbitmq/startup_err
+  - cat /var/log/rabbitmq/shutdown_log
+  - cat /var/log/rabbitmq/shutdown_err

@@ -60,6 +60,7 @@ vows.describe('queue').addBatch({
 					}, function(seriesCallback) {
 						handle.closeAMQPCommunication(function() {
 							handle.socket.end();
+							seriesCallback();
 						});
 					}], function(error) {
 						if (error) {
